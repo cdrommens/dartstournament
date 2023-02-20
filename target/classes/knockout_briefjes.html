@@ -1,0 +1,1345 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Poules</title>
+    <style>
+        body {
+            font-family: Verdana,serif;
+        }
+        .dik {
+            border: 2px solid Black;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            border-collapse: collapse;
+            padding: 0;
+        }
+        .binnen {
+            width: 100%;
+            text-align: center;
+            border: 1px solid Black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 1</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 2</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 3</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 4</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr style="page-break-after: always"/>
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 5</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 6</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 7</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 8</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr style="page-break-after: always"/>
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 9</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 10</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 11</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 12</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr style="page-break-after: always"/>
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 13</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 14</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 15</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">16de finale - Game 16</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr style="page-break-after: always"/>
+    <!-- kwart -->
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kwartfinale - Game 1</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kwartfinale - Game 2</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kwartfinale - Game 3</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kwartfinale - Game 4</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr style="page-break-after: always"/>
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kwartfinale - Game 5</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kwartfinale - Game 6</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kwartfinale - Game 7</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kwartfinale - Game 8</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr style="page-break-after: always"/>
+    <!-- halve -->
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Halve finale - Game 1</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Halve finale - Game 2</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 5</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <!-- kleine -->
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Kleine finale</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 7</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table style="width: 100%; border-spacing: 10px">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr style="width: 100%">
+                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">Finale</td>
+                        <td style="width: 5%"></td>
+                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 7</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">#</td>
+                        <td class="binnen" style="width: 60%">NAAM</td>
+                        <td class="binnen" style="width: 20%">UITSLAG</td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">1</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                    <tr class="binnen">
+                        <td class="binnen" style="width: 20%">2</td>
+                        <td class="binnen" style="width: 60%"></td>
+                        <td class="binnen" style="width: 20%"> - </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="dik">
+                <table class="binnen">
+                    <tr>
+                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                        <td style="width: 80%; text-align: left; padding: 8px"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
