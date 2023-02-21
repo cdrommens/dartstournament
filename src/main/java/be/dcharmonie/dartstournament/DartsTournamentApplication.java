@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
+//TODO : tussen 16de finales en kwartfinales, 8ste finales toevoegen
+//TODO : alfabetiche aanwezigheidslijst genereren met vermelding in welke poule ze zitten
+//TODO : frontend toevoegen die dynamisch poules kan aanmaken met input
 @SpringBootApplication
 public class DartsTournamentApplication {
 
