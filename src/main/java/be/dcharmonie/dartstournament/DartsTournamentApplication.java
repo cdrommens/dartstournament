@@ -41,9 +41,10 @@ public class DartsTournamentApplication {
                 new Poule("Poule O", "Bradley Vermeersch", "Andy De Dapper", "Sven Tenteniez", "Stefan Dewitte", "Gregory Vanpoucke"),
                 new Poule("Poule P", "Mathias Vanden Berghe", "Pieter Cardon", "Pascal Hantson", "Sebastien De Meyer", "Kristof Dalez")
         );
-        pouleGenerator.generatePoules(poules, "poules");
-        pouleGenerator.generateBriefjes(poules, "poule_briefjes");
-        pouleGenerator.generateKnockOut("knockout_briefjes");
+        //pouleGenerator.generatePoules(poules, "poules");
+        //pouleGenerator.generateBriefjes(poules, "poule_briefjes");
+        //pouleGenerator.generateKnockOut("knockout_briefjes");
+        pouleGenerator.generateBrackets("brackets");
     }
 
 }
