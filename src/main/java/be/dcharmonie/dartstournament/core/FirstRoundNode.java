@@ -14,6 +14,7 @@ public class FirstRoundNode implements BracketNode, Drawable {
 
     private int x;
     private int y;
+    private boolean isLeft;
 
     public FirstRoundNode(Round round, int matchNumber) {
         this.round = round;
@@ -66,15 +67,46 @@ public class FirstRoundNode implements BracketNode, Drawable {
     }
 
     @Override
-    public void drawImage(Graphics2D graphics, int numberOfRounds, int x, int y) {
-        this.x = x - (getWidth()/2) - ((getRound().getRoundNumber()-1)*getWidth());
+    public void drawImage(Graphics2D graphics, int x, int y) {
         int numberOfPlayersInRound = (int)Math.pow(2,getRound().getRoundNumber());
         int numberOfMatchesInRound = numberOfPlayersInRound/2;
         int numberOfMatchesInHalfRound = numberOfMatchesInRound/2;
-        this.y = getMatchNumber() <= numberOfMatchesInHalfRound
-                ? y - (getHeight() / 2) - ((numberOfMatchesInHalfRound - getMatchNumber()) * getHeight())
-                : y + (getHeight() / 2) + ((getMatchNumber() - numberOfMatchesInHalfRound) * getHeight());
-        drawBox(graphics, numberOfRounds, this.x, this.y);
+        int numberOfMatchesInQuarterRound = numberOfMatchesInHalfRound/2;
+
+        if (getMatchNumber() <= numberOfMatchesInHalfRound) {
+            drawImageLeft(graphics, numberOfMatchesInQuarterRound, x, y);
+        } else {
+            drawImageRight(graphics, numberOfMatchesInHalfRound + numberOfMatchesInQuarterRound, x, y);
+        }
+    }
+
+    @Override
+    public boolean isLeftBracket() {
+        return this.isLeft;
+    }
+
+    private void drawImageLeft(Graphics2D graphics, int medio, int x, int y) {
+        this.x = x - (getWidth() / 2) - ((getRound().getRoundNumber() - 1) * getWidth());
+        if (getMatchNumber() <= medio) {
+            this.y = y - (getHeight() / 2) - ((medio - getMatchNumber()) * getHeight());
+        } else {
+            this.y = y + (getHeight() / 2) + ((getMatchNumber() - medio - 1) * getHeight());
+        }
+        this.isLeft = true;
+        graphics.drawLine(this.x + (WIDTH / 2), this.y, this.x + (WIDTH / 2) + WIDTH_LINE, this.y);
+        drawBox(graphics, this.x, this.y);
+    }
+
+    private void drawImageRight(Graphics2D graphics, int medio, int x, int y) {
+        this.x = x + (getWidth() / 2) + ((getRound().getRoundNumber() - 1) * getWidth());
+        if (getMatchNumber() <= medio) {
+            this.y = y - (getHeight() / 2) - ((medio - getMatchNumber()) * getHeight());
+        } else {
+            this.y = y + (getHeight() / 2) + ((getMatchNumber() - medio - 1) * getHeight());
+        }
+        this.isLeft = false;
+        graphics.drawLine(this.x - (WIDTH / 2), this.y, this.x - (WIDTH / 2) - WIDTH_LINE, this.y);
+        drawBox(graphics, this.x, this.y);
     }
 
     @Override

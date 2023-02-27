@@ -14,6 +14,10 @@ public class RoundNode implements BracketNode, Drawable {
     private BracketNode previousFirstBracketNode;
     private BracketNode previousSecondBracketNode;
 
+    private int x;
+    private int y;
+    private boolean isLeft;
+
     public RoundNode(Round round, int matchNumber) {
         this.round = round;
         this.matchNumber = matchNumber;
@@ -65,22 +69,46 @@ public class RoundNode implements BracketNode, Drawable {
     }
 
     @Override
-    public void drawImage(Graphics2D graphics, int numberOfRounds, int x, int y) {
-        //drawBox(graphics, numberOfRounds, x, y);
-        //predecessors line
-        //graphics.drawLine(x-(WIDTH/2)-SCORE_WIDTH, y-(VERTICAL_LENGTH/4)-(numberOfRounds*getHeight()),
-        //        x-(WIDTH/2)-SCORE_WIDTH, y+(VERTICAL_LENGTH/4)+(numberOfRounds*getHeight()));
-        //debug
-        //graphics.drawRect(x-(getWidth()/2), y-(getHeight()/2), getWidth(), getHeight());
+    public void drawImage(Graphics2D graphics, int x, int y) {
+        if (getPreviousFirstBracketNode().isEmpty() || getPreviousSecondBracketNode().isEmpty()) {
+            throw new IllegalStateException("Trying to draw an incomplete node.");
+        }
+        Drawable previousFirstNode = (Drawable) getPreviousFirstBracketNode().get();
+        Drawable previousSecondNode = (Drawable) getPreviousSecondBracketNode().get();
+        if (previousFirstNode.isLeftBracket()) {
+            calculateImageLeft(previousFirstNode, previousSecondNode);
+        } else {
+            calculateImageRight(previousFirstNode, previousSecondNode);
+        }
+        graphics.drawLine(this.x - (WIDTH / 2), this.y, this.x - (WIDTH / 2) - WIDTH_LINE, this.y);
+        graphics.drawLine(this.x + (WIDTH / 2), this.y, this.x + (WIDTH / 2) + WIDTH_LINE, this.y);
+        drawBox(graphics, this.x, this.y);
+    }
+
+    @Override
+    public boolean isLeftBracket() {
+        return this.isLeft;
     }
 
     @Override
     public int getX() {
-        return 0;
+        return this.x;
     }
 
     @Override
     public int getY() {
-        return 0;
+        return this.y;
+    }
+
+    private void calculateImageLeft(Drawable previousFirstNode, Drawable previousSecondNode) {
+        this.x = previousFirstNode.getX() + (getWidth() / 2) + getWidth();
+        this.y = ((previousSecondNode.getY() - previousFirstNode.getY()) / 2) + previousFirstNode.getY();
+        this.isLeft = true;
+    }
+
+    private void calculateImageRight(Drawable previousFirstNode, Drawable previousSecondNode) {
+        this.x = previousFirstNode.getX() - (getWidth() / 2) - getWidth();
+        this.y = ((previousSecondNode.getY() - previousFirstNode.getY()) / 2) + previousFirstNode.getY();
+        this.isLeft = false;
     }
 }

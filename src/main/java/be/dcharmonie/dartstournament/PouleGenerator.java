@@ -1,8 +1,5 @@
 package be.dcharmonie.dartstournament;
 
-import be.dcharmonie.dartstournament.core.FirstRoundNode;
-import be.dcharmonie.dartstournament.core.Tournament;
-import com.lowagie.text.DocumentException;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -11,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -18,6 +16,13 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.util.FSImageWriter;
+
+import com.lowagie.text.DocumentException;
+
+import be.dcharmonie.dartstournament.core.Drawable;
+import be.dcharmonie.dartstournament.core.FirstRoundNode;
+import be.dcharmonie.dartstournament.core.Round;
+import be.dcharmonie.dartstournament.core.Tournament;
 
 /**
  *
@@ -134,21 +139,40 @@ public class PouleGenerator {
             FinalNode finalNode = new FinalNode();
             FirstRoundNode match1 = new FirstRoundNode(Round.FINAL_16, 1);
             FirstRoundNode match2 = new FirstRoundNode(Round.FINAL_16, 2);
-            FirstRoundNode match10 = new FirstRoundNode(Round.FINAL_16, 10);
-            FirstRoundNode match11 = new FirstRoundNode(Round.FINAL_16, 11);
+            RoundNode match1_1 = new RoundNode(Round.FINAL_8, 1);
+            match1.setNextBracketNode(match1_1);
+            match2.setNextBracketNode(match1_1);
+            match1_1.setPreviousFirstBracketNode(match1);
+            match1_1.setPreviousSecondBracketNode(match2);
 
-            finalNode.drawImage(graphics, 0, width/2, height/2);
-            match1.drawImage(graphics, 0, width/2, height/2);
-            match2.drawImage(graphics, 0, width/2, height/2);
-            match10.drawImage(graphics, 0, width/2, height/2);
-            match11.drawImage(graphics, 0, width/2, height/2);
+            FirstRoundNode match10 = new FirstRoundNode(Round.FINAL_16, 13);
+            FirstRoundNode match11 = new FirstRoundNode(Round.FINAL_16, 14);
+
+            finalNode.drawImage(graphics, width/2, height/2);
+            match1.drawImage(graphics, width/2, height/2);
+            match2.drawImage(graphics, width/2, height/2);
+            ((RoundNode)match1.getNextBracketNode().get()).drawImage(graphics, 0, 0);
+
+            match10.drawImage(graphics,width/2, height/2);
+            match11.drawImage(graphics, width/2, height/2);
             */
 
-            Tournament tournament = new Tournament(32);
-            tournament.getFinal().drawBox(graphics, 0, width/2, height/2);
-            tournament.getTournamentMap().values().stream()
-                            .filter(node -> node instanceof FirstRoundNode)
-                                    .forEach(node -> ((FirstRoundNode) node).drawImage(graphics, 0, width/2, height/2));
+
+            Tournament tournament = new Tournament(64);
+            tournament.getFinal().drawImage(graphics, width/2, height/2);
+            tournament.getSortedStreamFirstRoundNodes()
+                     .forEach(node -> ((FirstRoundNode) node).drawImage(graphics, width/2, height/2));
+            List<Round> sortedRounds = tournament.getRoundNodesGroupedByRound().keySet().stream()
+                    .filter(round -> round != tournament.getFirstRoundType())
+                    .filter(round -> round != Round.FINAL)
+                    .sorted()
+                    .toList();
+
+            for (Round round : sortedRounds) {
+                tournament.getRoundNodesGroupedByRound().get(round)
+                        .forEach(node -> ((Drawable)node).drawImage(graphics, 0, 0));
+            }
+
             graphics.dispose();
 
             FSImageWriter imageWriter = new FSImageWriter();

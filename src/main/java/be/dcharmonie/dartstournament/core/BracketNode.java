@@ -1,11 +1,12 @@
 package be.dcharmonie.dartstournament.core;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
  *
  */
-public interface BracketNode {
+public interface BracketNode extends Comparable<BracketNode> {
 
     Round getRound();
     int getMatchNumber();
@@ -22,4 +23,18 @@ public interface BracketNode {
     Optional<BracketNode> getPreviousFirstBracketNode();
 
     Optional<BracketNode> getPreviousSecondBracketNode();
+
+    @Override
+    default int compareTo(BracketNode o) {
+        if (Objects.isNull(o)) {
+            return 1;
+        }
+        if (getRound().getRoundNumber() > o.getRound().getRoundNumber()) {
+            return 1;
+        }
+        if (getRound().getRoundNumber() < o.getRound().getRoundNumber()) {
+            return -1;
+        }
+        return Integer.compare(getMatchNumber(), o.getMatchNumber());
+    }
 }

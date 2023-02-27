@@ -61,10 +61,18 @@ public class FinalNode implements BracketNode, Drawable {
     }
 
     @Override
-    public void drawImage(Graphics2D graphics, int numberOfRounds, int x, int y) {
+    public void drawImage(Graphics2D graphics, int x, int y) {
         this.x = x;
         this.y = y;
-        drawBox(graphics, numberOfRounds, x, y);
+        //graphics.drawLine(this.x + (WIDTH/2), this.y, this.x + (WIDTH/2) + WIDTH_LINE, this.y);
+        //graphics.drawLine(this.x - (WIDTH/2), this.y, this.x - (WIDTH/2) - WIDTH_LINE, this.y);
+        graphics.drawLine(0, this.y, x*2, this.y);
+        drawBox(graphics, x, y);
+    }
+
+    @Override
+    public boolean isLeftBracket() {
+        throw new UnsupportedOperationException("A final is always in the center");
     }
 
     @Override
