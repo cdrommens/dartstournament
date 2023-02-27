@@ -1,5 +1,7 @@
 package be.dcharmonie.dartstournament;
 
+import be.dcharmonie.dartstournament.core.FirstRoundNode;
+import be.dcharmonie.dartstournament.core.Tournament;
 import com.lowagie.text.DocumentException;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -110,11 +112,13 @@ public class PouleGenerator {
     //https://devtut.github.io/java/creating-images-programmatically.html#how-to-scale-a-bufferedimage
     public void generateBrackets(String filename) {
         try {
-            BufferedImage img = new BufferedImage(640, 480, BufferedImage.TYPE_INT_ARGB);
+            int width = 4961;
+            int height = 3508;
+            BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
             Graphics2D graphics = img.createGraphics();
             graphics.setBackground(Color.WHITE);
-            graphics.fillRect(0, 0, 640, 480);
+            graphics.fillRect(0, 0, width, height);
 
             /*    (0,0)
              *    ---------------------> X
@@ -123,9 +127,28 @@ public class PouleGenerator {
              *    Y
              */
             graphics.setColor(Color.BLACK);
-            graphics.drawRect(5, 5, 200, 60);
-            graphics.drawLine(5, 35, 205, 35);
+            //graphics.drawRect(5, 5, 200, 60);
+            //graphics.drawLine(5, 35, 205, 35);
 
+            /*
+            FinalNode finalNode = new FinalNode();
+            FirstRoundNode match1 = new FirstRoundNode(Round.FINAL_16, 1);
+            FirstRoundNode match2 = new FirstRoundNode(Round.FINAL_16, 2);
+            FirstRoundNode match10 = new FirstRoundNode(Round.FINAL_16, 10);
+            FirstRoundNode match11 = new FirstRoundNode(Round.FINAL_16, 11);
+
+            finalNode.drawImage(graphics, 0, width/2, height/2);
+            match1.drawImage(graphics, 0, width/2, height/2);
+            match2.drawImage(graphics, 0, width/2, height/2);
+            match10.drawImage(graphics, 0, width/2, height/2);
+            match11.drawImage(graphics, 0, width/2, height/2);
+            */
+
+            Tournament tournament = new Tournament(32);
+            tournament.getFinal().drawBox(graphics, 0, width/2, height/2);
+            tournament.getTournamentMap().values().stream()
+                            .filter(node -> node instanceof FirstRoundNode)
+                                    .forEach(node -> ((FirstRoundNode) node).drawImage(graphics, 0, width/2, height/2));
             graphics.dispose();
 
             FSImageWriter imageWriter = new FSImageWriter();

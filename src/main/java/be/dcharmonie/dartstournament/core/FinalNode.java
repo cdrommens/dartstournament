@@ -1,15 +1,19 @@
 package be.dcharmonie.dartstournament.core;
 
+import java.awt.Graphics2D;
 import java.util.Optional;
 
 /**
  *
  */
-public class FinalNode implements BracketNode {
+public class FinalNode implements BracketNode, Drawable {
 
     private static final Round ROUND = Round.FINAL;
     private BracketNode previousFirstBracketNode;
     private BracketNode previousSecondBracketNode;
+
+    private int x;
+    private int y;
 
     @Override
     public Round getRound() {
@@ -54,5 +58,22 @@ public class FinalNode implements BracketNode {
     @Override
     public Optional<BracketNode> getPreviousSecondBracketNode() {
         return Optional.ofNullable(previousSecondBracketNode);
+    }
+
+    @Override
+    public void drawImage(Graphics2D graphics, int numberOfRounds, int x, int y) {
+        this.x = x;
+        this.y = y;
+        drawBox(graphics, numberOfRounds, x, y);
+    }
+
+    @Override
+    public int getX() {
+        return this.x;
+    }
+
+    @Override
+    public int getY() {
+        return this.y;
     }
 }

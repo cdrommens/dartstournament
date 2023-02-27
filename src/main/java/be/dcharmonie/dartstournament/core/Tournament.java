@@ -24,6 +24,10 @@ public class Tournament {
         return (FinalNode) tournamentMap.get(generateKey(Round.FINAL, 1));
     }
 
+    public Map<String, BracketNode> getTournamentMap() {
+        return tournamentMap;
+    }
+
     private void generate() {
         //1. generate leaf : players /2
         //2. generate rest : players / 2 tot = 2
