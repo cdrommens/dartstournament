@@ -14,12 +14,10 @@ public interface Drawable {
     int WIDTH_LINE = 40;
     int VERTICAL_LENGTH = 120;
 
-    /**
-     * @param graphics
-     * @param x        : center
-     * @param y        : center
-     */
     void drawImage(Graphics2D graphics, int x, int y);
+    default void drawImage(Graphics2D graphics) {
+        drawImage(graphics, 0, 0);
+    }
     boolean isLeftBracket();
 
     int getX();

@@ -82,6 +82,7 @@ public class RoundNode implements BracketNode, Drawable {
         }
         graphics.drawLine(this.x - (WIDTH / 2), this.y, this.x - (WIDTH / 2) - WIDTH_LINE, this.y);
         graphics.drawLine(this.x + (WIDTH / 2), this.y, this.x + (WIDTH / 2) + WIDTH_LINE, this.y);
+        drawConnectionLine(graphics, previousFirstNode, previousSecondNode);
         drawBox(graphics, this.x, this.y);
     }
 
@@ -101,14 +102,26 @@ public class RoundNode implements BracketNode, Drawable {
     }
 
     private void calculateImageLeft(Drawable previousFirstNode, Drawable previousSecondNode) {
-        this.x = previousFirstNode.getX() + (getWidth() / 2) + getWidth();
+        this.x = previousFirstNode.getX() + getWidth();
         this.y = ((previousSecondNode.getY() - previousFirstNode.getY()) / 2) + previousFirstNode.getY();
         this.isLeft = true;
     }
 
     private void calculateImageRight(Drawable previousFirstNode, Drawable previousSecondNode) {
-        this.x = previousFirstNode.getX() - (getWidth() / 2) - getWidth();
+        this.x = previousFirstNode.getX() - getWidth();
         this.y = ((previousSecondNode.getY() - previousFirstNode.getY()) / 2) + previousFirstNode.getY();
         this.isLeft = false;
+    }
+
+    private void drawConnectionLine(Graphics2D graphics, Drawable previousFirstNode, Drawable previousSecondNode) {
+        if (previousSecondNode.isLeftBracket()) {
+            graphics.drawLine(
+                    this.x - (WIDTH / 2) - WIDTH_LINE, previousFirstNode.getY(),
+                    this.x - (WIDTH / 2) - WIDTH_LINE, previousSecondNode.getY());
+        } else {
+            graphics.drawLine(
+                    this.x + (WIDTH / 2) + WIDTH_LINE, previousFirstNode.getY(),
+                    this.x + (WIDTH / 2) + WIDTH_LINE, previousSecondNode.getY());
+        }
     }
 }

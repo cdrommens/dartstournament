@@ -28,24 +28,24 @@ public class Tournament {
         return (FinalNode) tournamentMap.get(generateKey(Round.FINAL, 1));
     }
 
-    public Round getFirstRoundType() {
+    public int getNumberOfPlayers() {
+        return numberOfPlayers;
+    }
+
+    Round getFirstRoundType() {
         return getSortedStreamFirstRoundNodes().findFirst()
                 .map(BracketNode::getRound)
                 .orElseThrow(() -> new IllegalStateException("Tournament doesn't have any first rounds"));
     }
-    public Stream<BracketNode> getSortedStreamFirstRoundNodes() {
+    Stream<BracketNode> getSortedStreamFirstRoundNodes() {
         Comparator<BracketNode> sorter = Comparator.naturalOrder();
         return tournamentMap.values().stream()
                 .filter(node -> node instanceof FirstRoundNode)
                 .sorted();
     }
-    public Map<Round, List<BracketNode>> getRoundNodesGroupedByRound() {
+    Map<Round, List<BracketNode>> getRoundNodesGroupedByRound() {
         return tournamentMap.values().stream()
                 .collect(Collectors.groupingBy(BracketNode::getRound));
-    }
-    public Stream<BracketNode> getSortedStreamEvenFirstRoundNodes() {
-        return getSortedStreamFirstRoundNodes()
-                .filter(node -> node.getMatchNumber() % 2 == 0);
     }
 
     private void generate() {

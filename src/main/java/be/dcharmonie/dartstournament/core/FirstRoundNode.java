@@ -86,7 +86,7 @@ public class FirstRoundNode implements BracketNode, Drawable {
     }
 
     private void drawImageLeft(Graphics2D graphics, int medio, int x, int y) {
-        this.x = x - (getWidth() / 2) - ((getRound().getRoundNumber() - 1) * getWidth());
+        this.x = x - getWidth() - ((getRound().getRoundNumber() - 2) * getWidth());
         if (getMatchNumber() <= medio) {
             this.y = y - (getHeight() / 2) - ((medio - getMatchNumber()) * getHeight());
         } else {
@@ -98,7 +98,7 @@ public class FirstRoundNode implements BracketNode, Drawable {
     }
 
     private void drawImageRight(Graphics2D graphics, int medio, int x, int y) {
-        this.x = x + (getWidth() / 2) + ((getRound().getRoundNumber() - 1) * getWidth());
+        this.x = x + getWidth() + ((getRound().getRoundNumber() - 2) * getWidth());
         if (getMatchNumber() <= medio) {
             this.y = y - (getHeight() / 2) - ((medio - getMatchNumber()) * getHeight());
         } else {

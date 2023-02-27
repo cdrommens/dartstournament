@@ -64,10 +64,9 @@ public class FinalNode implements BracketNode, Drawable {
     public void drawImage(Graphics2D graphics, int x, int y) {
         this.x = x;
         this.y = y;
-        //graphics.drawLine(this.x + (WIDTH/2), this.y, this.x + (WIDTH/2) + WIDTH_LINE, this.y);
-        //graphics.drawLine(this.x - (WIDTH/2), this.y, this.x - (WIDTH/2) - WIDTH_LINE, this.y);
-        graphics.drawLine(0, this.y, x*2, this.y);
         drawBox(graphics, x, y);
+        graphics.drawLine(this.x - (WIDTH / 2), this.y, this.x - (WIDTH / 2) - WIDTH_LINE, this.y);
+        graphics.drawLine(this.x + (WIDTH / 2), this.y, this.x + (WIDTH / 2) + WIDTH_LINE, this.y);
     }
 
     @Override
