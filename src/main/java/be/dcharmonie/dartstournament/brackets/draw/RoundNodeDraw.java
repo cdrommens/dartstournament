@@ -1,80 +1,31 @@
-package be.dcharmonie.dartstournament.core;
+package be.dcharmonie.dartstournament.brackets.draw;
 
 import java.awt.Graphics2D;
-import java.util.Optional;
+
+import be.dcharmonie.dartstournament.brackets.core.BracketNode;
 
 /**
  *
  */
-public class RoundNode implements BracketNode, Drawable {
+public class RoundNodeDraw implements Drawable {
 
-    private final Round round;
-    private final int matchNumber;
-    private BracketNode nextBracketNode;
-    private BracketNode previousFirstBracketNode;
-    private BracketNode previousSecondBracketNode;
-
+    private final BracketNode parent;
     private int x;
     private int y;
     private boolean isLeft;
 
-    public RoundNode(Round round, int matchNumber) {
-        this.round = round;
-        this.matchNumber = matchNumber;
-    }
-
-    @Override
-    public Round getRound() {
-        return round;
-    }
-
-    @Override
-    public int getMatchNumber() {
-        return matchNumber;
-    }
-
-    @Override
-    public String getDescription() {
-        return round.toString() + " - Game " + matchNumber;
-    }
-
-    @Override
-    public void setPreviousFirstBracketNode(BracketNode previousFirstBracketNode) {
-        this.previousFirstBracketNode = previousFirstBracketNode;
-    }
-
-    @Override
-    public void setPreviousSecondBracketNode(BracketNode previousSecondBracketNode) {
-        this.previousSecondBracketNode = previousSecondBracketNode;
-    }
-
-    @Override
-    public void setNextBracketNode(BracketNode nextBracketNode) {
-        this.nextBracketNode = nextBracketNode;
-    }
-
-    @Override
-    public Optional<BracketNode> getNextBracketNode() {
-        return Optional.ofNullable(nextBracketNode);
-    }
-
-    @Override
-    public Optional<BracketNode> getPreviousFirstBracketNode() {
-        return Optional.ofNullable(previousFirstBracketNode);
-    }
-
-    @Override
-    public Optional<BracketNode> getPreviousSecondBracketNode() {
-        return Optional.ofNullable(previousSecondBracketNode);
+    public RoundNodeDraw(BracketNode parent) {
+        this.parent = parent;
     }
 
     @Override
     public void drawImage(Graphics2D graphics, int x, int y) {
-        if (getPreviousFirstBracketNode().isEmpty() || getPreviousSecondBracketNode().isEmpty()) {
-            throw new IllegalStateException("Trying to draw an incomplete node.");
-        }
-        Drawable previousFirstNode = (Drawable) getPreviousFirstBracketNode().get();
-        Drawable previousSecondNode = (Drawable) getPreviousSecondBracketNode().get();
+        Drawable previousFirstNode = parent.getPreviousFirstBracketNode()
+                .map(BracketNode::getDrawable)
+                .orElseThrow(() -> new IllegalStateException("Trying to draw an incomplete previous first node."));
+        Drawable previousSecondNode = parent.getPreviousSecondBracketNode()
+                .map(BracketNode::getDrawable)
+                .orElseThrow(() -> new IllegalStateException("Trying to draw an incomplete previous second node."));
         if (previousFirstNode.isLeftBracket()) {
             calculateImageLeft(previousFirstNode, previousSecondNode);
         } else {

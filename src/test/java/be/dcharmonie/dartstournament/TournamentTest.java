@@ -1,7 +1,8 @@
 package be.dcharmonie.dartstournament;
 
-import be.dcharmonie.dartstournament.core.Tournament;
 import org.junit.jupiter.api.Test;
+
+import be.dcharmonie.dartstournament.brackets.core.Tournament;
 
 /**
  *

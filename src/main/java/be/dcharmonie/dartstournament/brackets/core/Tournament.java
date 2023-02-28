@@ -1,4 +1,4 @@
-package be.dcharmonie.dartstournament.core;
+package be.dcharmonie.dartstournament.brackets.core;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -32,18 +32,18 @@ public class Tournament {
         return numberOfPlayers;
     }
 
-    Round getFirstRoundType() {
+    public Round getFirstRoundType() {
         return getSortedStreamFirstRoundNodes().findFirst()
                 .map(BracketNode::getRound)
                 .orElseThrow(() -> new IllegalStateException("Tournament doesn't have any first rounds"));
     }
-    Stream<BracketNode> getSortedStreamFirstRoundNodes() {
+    public Stream<BracketNode> getSortedStreamFirstRoundNodes() {
         Comparator<BracketNode> sorter = Comparator.naturalOrder();
         return tournamentMap.values().stream()
                 .filter(node -> node instanceof FirstRoundNode)
                 .sorted();
     }
-    Map<Round, List<BracketNode>> getRoundNodesGroupedByRound() {
+    public Map<Round, List<BracketNode>> getRoundNodesGroupedByRound() {
         return tournamentMap.values().stream()
                 .collect(Collectors.groupingBy(BracketNode::getRound));
     }

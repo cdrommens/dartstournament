@@ -1,4 +1,4 @@
-package be.dcharmonie.dartstournament.core;
+package be.dcharmonie.dartstournament.brackets.draw;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

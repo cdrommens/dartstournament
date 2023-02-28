@@ -1,19 +1,20 @@
-package be.dcharmonie.dartstournament.core;
+package be.dcharmonie.dartstournament.brackets.core;
 
-import java.awt.Graphics2D;
 import java.util.Optional;
+
+import be.dcharmonie.dartstournament.brackets.draw.Drawable;
+import be.dcharmonie.dartstournament.brackets.draw.FinalNodeDraw;
 
 /**
  *
  */
-public class FinalNode implements BracketNode, Drawable {
+public class FinalNode implements BracketNode {
 
     private static final Round ROUND = Round.FINAL;
     private BracketNode previousFirstBracketNode;
     private BracketNode previousSecondBracketNode;
 
-    private int x;
-    private int y;
+    private final Drawable drawable = new FinalNodeDraw();
 
     @Override
     public Round getRound() {
@@ -60,27 +61,7 @@ public class FinalNode implements BracketNode, Drawable {
         return Optional.ofNullable(previousSecondBracketNode);
     }
 
-    @Override
-    public void drawImage(Graphics2D graphics, int x, int y) {
-        this.x = x;
-        this.y = y;
-        drawBox(graphics, x, y);
-        graphics.drawLine(this.x - (WIDTH / 2), this.y, this.x - (WIDTH / 2) - WIDTH_LINE, this.y);
-        graphics.drawLine(this.x + (WIDTH / 2), this.y, this.x + (WIDTH / 2) + WIDTH_LINE, this.y);
-    }
-
-    @Override
-    public boolean isLeftBracket() {
-        throw new UnsupportedOperationException("A final is always in the center");
-    }
-
-    @Override
-    public int getX() {
-        return this.x;
-    }
-
-    @Override
-    public int getY() {
-        return this.y;
+    public Drawable getDrawable() {
+        return drawable;
     }
 }

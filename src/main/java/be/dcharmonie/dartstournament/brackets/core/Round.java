@@ -1,4 +1,4 @@
-package be.dcharmonie.dartstournament.core;
+package be.dcharmonie.dartstournament.brackets.core;
 
 import java.util.HashMap;
 import java.util.Map;
