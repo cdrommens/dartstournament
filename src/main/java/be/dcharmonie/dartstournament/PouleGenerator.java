@@ -1,17 +1,24 @@
 package be.dcharmonie.dartstournament;
 
-import com.lowagie.text.DocumentException;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.xhtmlrenderer.util.FSImageWriter;
+
+import com.lowagie.text.DocumentException;
+
+import be.dcharmonie.dartstournament.core.Tournament;
+import be.dcharmonie.dartstournament.core.TournamentDrawer;
 
 /**
  *
@@ -99,6 +106,26 @@ public class PouleGenerator {
 
             outputStream.close();
         } catch (DocumentException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //https://devtut.github.io/java/creating-images-programmatically.html#how-to-scale-a-bufferedimage
+    public void generateBrackets(String filename) {
+        try {
+            int width = 4961;
+            int height = 3508;
+
+            Tournament tournament = new Tournament(32);
+            TournamentDrawer drawer = new TournamentDrawer(tournament);
+            BufferedImage img = drawer.drawImage();
+
+
+            FSImageWriter imageWriter = new FSImageWriter();
+            String outputFolderImg = System.getProperty("user.home") + File.separator + filename + ".png";
+            imageWriter.write(img, outputFolderImg);
+
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
