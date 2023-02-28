@@ -17,7 +17,7 @@ public enum Round {
     private final int roundNumber;
     private static final Map<Integer,Round> map;
     static {
-        map = new HashMap<Integer,Round>();
+        map = new HashMap<>();
         for (Round v : Round.values()) {
             map.put(v.roundNumber, v);
         }

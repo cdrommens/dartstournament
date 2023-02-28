@@ -1,6 +1,5 @@
 package be.dcharmonie.dartstournament.brackets.core;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +37,8 @@ public class Tournament {
                 .orElseThrow(() -> new IllegalStateException("Tournament doesn't have any first rounds"));
     }
     public Stream<BracketNode> getSortedStreamFirstRoundNodes() {
-        Comparator<BracketNode> sorter = Comparator.naturalOrder();
         return tournamentMap.values().stream()
-                .filter(node -> node instanceof FirstRoundNode)
+                .filter(FirstRoundNode.class::isInstance)
                 .sorted();
     }
     public Map<Round, List<BracketNode>> getRoundNodesGroupedByRound() {
@@ -76,7 +74,7 @@ public class Tournament {
 
     private void link() {
         tournamentMap.values().stream()
-                .filter(node -> node instanceof FirstRoundNode)
+                .filter(FirstRoundNode.class::isInstance)
                 .forEach(this::link);
     }
 
@@ -92,7 +90,6 @@ public class Tournament {
             String keyNextNode = generateKey(nextRound, nextMatchNumber);
             BracketNode nextNode = tournamentMap.get(keyNextNode);
             currentNode.setNextBracketNode(nextNode);
-            System.out.println("linked "+keyNextNode);
             link(nextNode);
         }
         if (currentNode != null && !(currentNode instanceof FirstRoundNode)
