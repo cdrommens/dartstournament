@@ -12,11 +12,13 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.xhtmlrenderer.util.FSImageWriter;
 
 import com.lowagie.text.DocumentException;
 
 import be.dcharmonie.dartstournament.brackets.core.Tournament;
-import be.dcharmonie.dartstournament.brackets.draw.TournamentDrawer;
+import be.dcharmonie.dartstournament.brackets.draw.BracketSchemaCreator;
+import be.dcharmonie.dartstournament.brackets.draw.layout.BracketSchemaPaperPrinter;
 
 /**
  *
@@ -111,10 +113,13 @@ public class PouleGenerator {
     //https://devtut.github.io/java/creating-images-programmatically.html#how-to-scale-a-bufferedimage
     public void generateBrackets(String filename) {
         try {
-            Tournament tournament = new Tournament(32);
-            TournamentDrawer drawer = new TournamentDrawer(tournament);
-            drawer.drawImage();
-            drawer.saveToDisk(filename);
+            Tournament tournament = new Tournament(64);
+            BracketSchemaPaperPrinter printer = new BracketSchemaPaperPrinter(tournament.getNumberOfPlayers(), tournament.getFirstRoundType().getRoundNumber());
+            BracketSchemaCreator drawer = new BracketSchemaCreator(tournament);
+            drawer.createSchema(printer);
+            FSImageWriter imageWriter = new FSImageWriter();
+            String outputFolderImg = System.getProperty("user.home") + File.separator + filename + ".png";
+            imageWriter.write(printer.getImage(), outputFolderImg);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

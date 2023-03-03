@@ -1,14 +1,18 @@
 package be.dcharmonie.dartstournament.brackets.draw;
 
-import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
 
 import be.dcharmonie.dartstournament.brackets.core.BracketNode;
+import be.dcharmonie.dartstournament.brackets.draw.layout.BracketBoxShape;
+import be.dcharmonie.dartstournament.brackets.draw.layout.LineShape;
+import be.dcharmonie.dartstournament.brackets.draw.layout.Shape;
 
 /**
  *
  */
 public class FirstRoundNodeDraw implements Drawable {
-
+    private static final List<Shape> SHAPES = new ArrayList<>();
     private final BracketNode parent;
     private int x;
     private int y;
@@ -19,16 +23,16 @@ public class FirstRoundNodeDraw implements Drawable {
     }
 
     @Override
-    public void drawImage(Graphics2D graphics, int x, int y) {
+    public void assembleImage(int x, int y) {
         int numberOfPlayersInRound = (int)Math.pow(2, parent.getRound().getRoundNumber());
         int numberOfMatchesInRound = numberOfPlayersInRound/2;
         int numberOfMatchesInHalfRound = numberOfMatchesInRound/2;
         int numberOfMatchesInQuarterRound = numberOfMatchesInHalfRound/2;
 
         if (parent.getMatchNumber() <= numberOfMatchesInHalfRound) {
-            drawImageLeft(graphics, numberOfMatchesInQuarterRound, x, y);
+            drawImageLeft(numberOfMatchesInQuarterRound, x, y);
         } else {
-            drawImageRight(graphics, numberOfMatchesInHalfRound + numberOfMatchesInQuarterRound, x, y);
+            drawImageRight(numberOfMatchesInHalfRound + numberOfMatchesInQuarterRound, x, y);
         }
     }
 
@@ -37,28 +41,28 @@ public class FirstRoundNodeDraw implements Drawable {
         return this.isLeft;
     }
 
-    private void drawImageLeft(Graphics2D graphics, int medio, int x, int y) {
-        this.x = x - getWidth() - ((parent.getRound().getRoundNumber() - 2) * getWidth());
+    private void drawImageLeft(int medio, int x, int y) {
+        this.x = x - Shape.BOX_WIDTH - ((parent.getRound().getRoundNumber() - 2) * Shape.BOX_WIDTH);
         if (parent.getMatchNumber() <= medio) {
-            this.y = y - (getHeight() / 2) - ((medio - parent.getMatchNumber()) * getHeight());
+            this.y = y - (Shape.BOX_HEIGHT / 2) - ((medio - parent.getMatchNumber()) * Shape.BOX_HEIGHT);
         } else {
-            this.y = y + (getHeight() / 2) + ((parent.getMatchNumber() - medio - 1) * getHeight());
+            this.y = y + (Shape.BOX_HEIGHT / 2) + ((parent.getMatchNumber() - medio - 1) * Shape.BOX_HEIGHT);
         }
         this.isLeft = true;
-        graphics.drawLine(this.x + (WIDTH / 2), this.y, this.x + (WIDTH / 2) + WIDTH_LINE, this.y);
-        drawBox(graphics, this.x, this.y);
+        SHAPES.add(new LineShape(this.x + (Shape.WIDTH / 2), this.y, this.x + (Shape.WIDTH / 2) + Shape.WIDTH_LINE, this.y));
+        SHAPES.add(new BracketBoxShape( this.x, this.y));
     }
 
-    private void drawImageRight(Graphics2D graphics, int medio, int x, int y) {
-        this.x = x + getWidth() + ((parent.getRound().getRoundNumber() - 2) * getWidth());
+    private void drawImageRight(int medio, int x, int y) {
+        this.x = x + Shape.BOX_WIDTH + ((parent.getRound().getRoundNumber() - 2) * Shape.BOX_WIDTH);
         if (parent.getMatchNumber() <= medio) {
-            this.y = y - (getHeight() / 2) - ((medio - parent.getMatchNumber()) * getHeight());
+            this.y = y - (Shape.BOX_HEIGHT / 2) - ((medio - parent.getMatchNumber()) * Shape.BOX_HEIGHT);
         } else {
-            this.y = y + (getHeight() / 2) + ((parent.getMatchNumber() - medio - 1) * getHeight());
+            this.y = y + (Shape.BOX_HEIGHT / 2) + ((parent.getMatchNumber() - medio - 1) * Shape.BOX_HEIGHT);
         }
         this.isLeft = false;
-        graphics.drawLine(this.x - (WIDTH / 2), this.y, this.x - (WIDTH / 2) - WIDTH_LINE, this.y);
-        drawBox(graphics, this.x, this.y);
+        SHAPES.add(new LineShape(this.x - (Shape.WIDTH / 2), this.y, this.x - (Shape.WIDTH / 2) - Shape.WIDTH_LINE, this.y));
+        SHAPES.add(new BracketBoxShape( this.x, this.y));
     }
 
     @Override
@@ -69,5 +73,10 @@ public class FirstRoundNodeDraw implements Drawable {
     @Override
     public int getY() {
         return this.y;
+    }
+
+    @Override
+    public List<Shape> getShapes() {
+        return SHAPES;
     }
 }

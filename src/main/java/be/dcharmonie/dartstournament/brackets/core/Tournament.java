@@ -46,6 +46,10 @@ public class Tournament {
                 .collect(Collectors.groupingBy(BracketNode::getRound));
     }
 
+    public Stream<BracketNode> getAllBracketNodes() {
+        return tournamentMap.values().stream();
+    }
+
     private void generate() {
         //1. generate leaf : players /2
         //2. generate rest : players / 2 tot = 2
