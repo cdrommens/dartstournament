@@ -24,476 +24,56 @@
 </head>
 <body>
 <div th:each="poule: ${poules}">
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerA()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerB()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerE()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr />
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerD()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerE()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerA()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr />
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerB()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerC()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerD()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr />
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerD()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerA()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerC()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr style="page-break-after: always"/>
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerC()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerE()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerB()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr />
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerB()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerD()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerE()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr />
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerA()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerC()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerD()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr />
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerE()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerB()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerA()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr style="page-break-after: always"/>
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerC()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerD()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerB()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr />
-    <table style="width: 100%; border-spacing: 10px">
-        <tr>
-            <td>
-                <table style="width: 100%;">
-                    <tr style="width: 100%">
-                        <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
-                        <td style="width: 5%"></td>
-                        <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px">BEST OF 3</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">#</td>
-                        <td class="binnen" style="width: 60%">NAAM</td>
-                        <td class="binnen" style="width: 20%">UITSLAG</td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">1</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerE()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                    <tr class="binnen">
-                        <td class="binnen" style="width: 20%">2</td>
-                        <td class="binnen" style="width: 60%" th:text="${poule.playerA()}"></td>
-                        <td class="binnen" style="width: 20%"> - </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="dik">
-                <table class="binnen">
-                    <tr>
-                        <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                        <td style="width: 80%; text-align: left; padding: 8px" th:text="${poule.playerC()}"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr style="page-break-after: always"/>
+    <div th:each="game,iter: ${poule.getGames()}">
+        <table style="width: 100%; border-spacing: 10px">
+            <tr>
+                <td>
+                    <table style="width: 100%;">
+                        <tr style="width: 100%">
+                            <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
+                            <td style="width: 5%"></td>
+                            <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
+                            <td style="width: 5%"></td>
+                            <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:each="|BEST OF ${poule.getBestOf()}|"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="dik">
+                    <table class="binnen">
+                        <tr class="binnen">
+                            <td class="binnen" style="width: 20%">#</td>
+                            <td class="binnen" style="width: 60%">NAAM</td>
+                            <td class="binnen" style="width: 20%">UITSLAG</td>
+                        </tr>
+                        <tr class="binnen">
+                            <td class="binnen" style="width: 20%">1</td>
+                            <td class="binnen" style="width: 60%" th:text="${game.player1()}"></td>
+                            <td class="binnen" style="width: 20%"> - </td>
+                        </tr>
+                        <tr class="binnen">
+                            <td class="binnen" style="width: 20%">2</td>
+                            <td class="binnen" style="width: 60%" th:text="${game.player2()}"></td>
+                            <td class="binnen" style="width: 20%"> - </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="dik">
+                    <table class="binnen">
+                        <tr>
+                            <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
+                            <td style="width: 80%; text-align: left; padding: 8px" th:text="${game.writer()}"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <hr th:if="${iter.index % 3 != 0}"/>
+        <hr style="page-break-after: always" th:if="${iter.index % 3 == 0}"/>
+    </div>
 </div>
 </body>
 </html>

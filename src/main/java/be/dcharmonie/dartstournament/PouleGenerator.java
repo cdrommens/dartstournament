@@ -16,9 +16,10 @@ import org.xhtmlrenderer.util.FSImageWriter;
 
 import com.lowagie.text.DocumentException;
 
-import be.dcharmonie.dartstournament.brackets.core.Tournament;
-import be.dcharmonie.dartstournament.brackets.draw.BracketSchemaCreator;
-import be.dcharmonie.dartstournament.brackets.draw.layout.BracketSchemaPaperPrinter;
+import be.dcharmonie.dartstournament.core.Poule;
+import be.dcharmonie.dartstournament.core.Tournament;
+import be.dcharmonie.dartstournament.renderer.image.BracketSchemaImageRenderer;
+import be.dcharmonie.dartstournament.renderer.image.layout.BracketSchemaPaperPrinter;
 
 /**
  *
@@ -113,9 +114,9 @@ public class PouleGenerator {
     //https://devtut.github.io/java/creating-images-programmatically.html#how-to-scale-a-bufferedimage
     public void generateBrackets(String filename) {
         try {
-            Tournament tournament = new Tournament(64);
-            BracketSchemaPaperPrinter printer = new BracketSchemaPaperPrinter(tournament.getNumberOfPlayers(), tournament.getFirstRoundType().getRoundNumber());
-            BracketSchemaCreator drawer = new BracketSchemaCreator(tournament);
+            Tournament tournament = new Tournament(80,  10, 32);
+            BracketSchemaPaperPrinter printer = new BracketSchemaPaperPrinter(tournament.getNumberOfPlayersKnockOutPhase(), tournament.getFirstRoundType().getRoundNumber());
+            BracketSchemaImageRenderer drawer = new BracketSchemaImageRenderer(tournament);
             drawer.createSchema(printer);
             FSImageWriter imageWriter = new FSImageWriter();
             String outputFolderImg = System.getProperty("user.home") + File.separator + filename + ".png";
@@ -136,4 +137,3 @@ public class PouleGenerator {
          */
 }
 
-record Poule (String name, String playerA, String playerB, String playerC, String playerD, String playerE) {}

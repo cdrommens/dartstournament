@@ -1,6 +1,5 @@
 package be.dcharmonie.dartstournament;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +22,7 @@ public class DartsTournamentApplication {
 
     @EventListener(classes = ApplicationReadyEvent.class)
     public void ready(){
+        /*
         List<Poule> poules = List.of(
                 new Poule("Poule A", "Olivier Van de Walle", "Christophe Camerlynck", "Bjorn Depaepe", "Douwe Van Breuseghem", "Jason Vanderbruggen"),
                 new Poule("Poule B", "Manuel De Weerdt", "Olivier Leclercq", "Eddy Devillez", "Christophe Van Der Beken", "Ilias Ikadouran"),
@@ -41,6 +41,7 @@ public class DartsTournamentApplication {
                 new Poule("Poule O", "Bradley Vermeersch", "Andy De Dapper", "Sven Tenteniez", "Stefan Dewitte", "Gregory Vanpoucke"),
                 new Poule("Poule P", "Mathias Vanden Berghe", "Pieter Cardon", "Pascal Hantson", "Sebastien De Meyer", "Kristof Dalez")
         );
+         */
         //pouleGenerator.generatePoules(poules, "poules");
         //pouleGenerator.generateBriefjes(poules, "poule_briefjes");
         //pouleGenerator.generateKnockOut("knockout_briefjes");

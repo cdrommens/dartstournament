@@ -1,9 +1,9 @@
-package be.dcharmonie.dartstournament.brackets.core;
+package be.dcharmonie.dartstournament.core;
 
 import java.util.Optional;
 
-import be.dcharmonie.dartstournament.brackets.draw.Drawable;
-import be.dcharmonie.dartstournament.brackets.draw.FinalNodeDraw;
+import be.dcharmonie.dartstournament.renderer.image.Drawable;
+import be.dcharmonie.dartstournament.renderer.image.FinalNodeDraw;
 
 /**
  *

@@ -1,4 +1,4 @@
-package be.dcharmonie.dartstournament.brackets.draw.layout;
+package be.dcharmonie.dartstournament.renderer.image.layout;
 
 /**
  *

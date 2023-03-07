@@ -1,10 +1,10 @@
-package be.dcharmonie.dartstournament.brackets.draw.layout;
+package be.dcharmonie.dartstournament.renderer.image.layout;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import be.dcharmonie.dartstournament.brackets.draw.Drawable;
+import be.dcharmonie.dartstournament.renderer.image.Drawable;
 
 /**
  *

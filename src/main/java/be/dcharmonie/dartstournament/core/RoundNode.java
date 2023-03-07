@@ -1,22 +1,25 @@
-package be.dcharmonie.dartstournament.brackets.core;
+package be.dcharmonie.dartstournament.core;
 
+import java.util.Objects;
 import java.util.Optional;
 
-import be.dcharmonie.dartstournament.brackets.draw.Drawable;
-import be.dcharmonie.dartstournament.brackets.draw.FirstRoundNodeDraw;
+import be.dcharmonie.dartstournament.renderer.image.Drawable;
+import be.dcharmonie.dartstournament.renderer.image.RoundNodeDraw;
 
 /**
  *
  */
-public class FirstRoundNode implements BracketNode {
+public class RoundNode implements BracketNode {
 
     private final Round round;
     private final int matchNumber;
     private BracketNode nextBracketNode;
+    private BracketNode previousFirstBracketNode;
+    private BracketNode previousSecondBracketNode;
 
-    private final Drawable drawable = new FirstRoundNodeDraw(this);
+    private final Drawable drawable = new RoundNodeDraw(this);
 
-    public FirstRoundNode(Round round, int matchNumber) {
+    public RoundNode(Round round, int matchNumber) {
         this.round = round;
         this.matchNumber = matchNumber;
     }
@@ -38,12 +41,12 @@ public class FirstRoundNode implements BracketNode {
 
     @Override
     public void setPreviousFirstBracketNode(BracketNode previousFirstBracketNode) {
-        throw new UnsupportedOperationException("A first round node can't have previous rounds.");
+        this.previousFirstBracketNode = previousFirstBracketNode;
     }
 
     @Override
     public void setPreviousSecondBracketNode(BracketNode previousSecondBracketNode) {
-        throw new UnsupportedOperationException("A first round node can't have previous rounds.");
+        this.previousSecondBracketNode = previousSecondBracketNode;
     }
 
     @Override
@@ -58,15 +61,31 @@ public class FirstRoundNode implements BracketNode {
 
     @Override
     public Optional<BracketNode> getPreviousFirstBracketNode() {
-        return Optional.empty();
+        return Optional.ofNullable(previousFirstBracketNode);
     }
 
     @Override
     public Optional<BracketNode> getPreviousSecondBracketNode() {
-        return Optional.empty();
+        return Optional.ofNullable(previousSecondBracketNode);
     }
 
     public Drawable getDrawable() {
         return drawable;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof RoundNode roundNode)) {
+            return false;
+        }
+        return getMatchNumber() == roundNode.getMatchNumber() && getRound() == roundNode.getRound();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRound(), getMatchNumber());
     }
 }

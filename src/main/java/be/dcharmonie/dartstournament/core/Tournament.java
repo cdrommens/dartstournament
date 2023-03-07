@@ -1,5 +1,6 @@
-package be.dcharmonie.dartstournament.brackets.core;
+package be.dcharmonie.dartstournament.core;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,73 +12,101 @@ import java.util.stream.Stream;
  */
 public class Tournament {
 
-    private final int numberOfPlayers;
-    private final Map<String, BracketNode> tournamentMap = new HashMap<>();
+    private final int totalNumberOfPlayers;
+    private final int numberOfPlayersKnockOutPhase;
+    private int numberOfPoules;
+    private final List<Poule> poules = new ArrayList<>(numberOfPoules);
+    private final Map<String, BracketNode> knockOut = new HashMap<>();
 
-    public Tournament(int numberOfPlayers) {
-        if (Round.findByRoundNumber(calculateNumberOfRounds(numberOfPlayers)) == null) {
-            throw new IllegalArgumentException("Unsupported number of players");
-        }
-        this.numberOfPlayers = numberOfPlayers;
+    public Tournament(int totalNumberOfPlayers, int numberOfPoules, int numberOfPlayersKnockOutPhase) {
+        this.totalNumberOfPlayers = totalNumberOfPlayers;
+        this.numberOfPoules = numberOfPoules;
+        this.numberOfPlayersKnockOutPhase = validateNumberOfPlayersKnockOutPhase(numberOfPlayersKnockOutPhase);
         generate();
         link();
     }
 
     public FinalNode getFinal() {
-        return (FinalNode) tournamentMap.get(generateKey(Round.FINAL, 1));
+        return (FinalNode) knockOut.get(generateKey(Round.FINAL, 1));
     }
 
-    public int getNumberOfPlayers() {
-        return numberOfPlayers;
+    public int getNumberOfPlayersKnockOutPhase() {
+        return numberOfPlayersKnockOutPhase;
     }
 
     public Round getFirstRoundType() {
         return getSortedStreamFirstRoundNodes().findFirst()
                 .map(BracketNode::getRound)
-                .orElseThrow(() -> new IllegalStateException("Tournament doesn't have any first rounds"));
+                .orElse(Round.FINAL);
     }
     public Stream<BracketNode> getSortedStreamFirstRoundNodes() {
-        return tournamentMap.values().stream()
+        return knockOut.values().stream()
                 .filter(FirstRoundNode.class::isInstance)
                 .sorted();
     }
     public Map<Round, List<BracketNode>> getRoundNodesGroupedByRound() {
-        return tournamentMap.values().stream()
+        return knockOut.values().stream()
                 .collect(Collectors.groupingBy(BracketNode::getRound));
     }
 
     public Stream<BracketNode> getAllBracketNodes() {
-        return tournamentMap.values().stream();
+        return knockOut.values().stream();
+    }
+
+    public void addPoule(Poule poule) {
+        this.poules.add(poule);
+    }
+
+    public List<Poule> getPoules() {
+        return poules;
+    }
+
+    private static int validateNumberOfPlayersKnockOutPhase(int numberOfPlayersKnockOutPhase) {
+        if (numberOfPlayersKnockOutPhase < 2) {
+            throw new IllegalArgumentException("There must be at least 2 players in the knock out phase.");
+        }
+        if (numberOfPlayersKnockOutPhase % 2 != 0) {
+            throw new IllegalArgumentException("Number of players in knock out phase must be even.");
+        }
+        if (Round.findByRoundNumber(calculateNumberOfRounds(numberOfPlayersKnockOutPhase)) == null) {
+            throw new IllegalArgumentException("Unsupported number of players");
+        }
+        return numberOfPlayersKnockOutPhase;
     }
 
     private void generate() {
         //1. generate leaf : players /2
         //2. generate rest : players / 2 tot = 2
         //3. add final
-        int numberOfFirstRoundGames = numberOfPlayers / 2;
-        int numberOfRounds = calculateNumberOfRounds(numberOfPlayers);
+        int numberOfFirstRoundGames = numberOfPlayersKnockOutPhase / 2;
+
+        FinalNode finalNode = new FinalNode();
+        knockOut.put(generateKey(finalNode), finalNode);
+        if (numberOfFirstRoundGames == 1) {
+            return;
+        }
+
+        int numberOfRounds = calculateNumberOfRounds(numberOfPlayersKnockOutPhase);
         for (int i = 0; i < numberOfFirstRoundGames; i++) {
             FirstRoundNode firstRoundNode = new FirstRoundNode(Round.findByRoundNumber(numberOfRounds), i+1);
-            tournamentMap.put(generateKey(firstRoundNode), firstRoundNode);
+            knockOut.put(generateKey(firstRoundNode), firstRoundNode);
         }
 
         int restOfGames = numberOfFirstRoundGames / 2;
-        int restOfPlayers = numberOfPlayers / 2;
+        int restOfPlayers = numberOfPlayersKnockOutPhase / 2;
         while ( restOfGames != 1) {
             int currentRound = calculateNumberOfRounds(restOfPlayers);
             for (int i = 0; i < restOfGames; i++) {
                 RoundNode roundNode = new RoundNode(Round.findByRoundNumber(currentRound), i+1);
-                tournamentMap.put(generateKey(roundNode), roundNode);
+                knockOut.put(generateKey(roundNode), roundNode);
             }
             restOfGames = restOfGames / 2;
             restOfPlayers = restOfPlayers / 2;
         }
-        FinalNode finalNode = new FinalNode();
-        tournamentMap.put(generateKey(finalNode), finalNode);
     }
 
     private void link() {
-        tournamentMap.values().stream()
+        knockOut.values().stream()
                 .filter(FirstRoundNode.class::isInstance)
                 .forEach(this::link);
     }
@@ -92,7 +121,7 @@ public class Tournament {
                 nextMatchNumber = (currentNode.getMatchNumber() + 1) / 2;
             }
             String keyNextNode = generateKey(nextRound, nextMatchNumber);
-            BracketNode nextNode = tournamentMap.get(keyNextNode);
+            BracketNode nextNode = knockOut.get(keyNextNode);
             currentNode.setNextBracketNode(nextNode);
             link(nextNode);
         }
@@ -103,8 +132,8 @@ public class Tournament {
             int previousSecondMatchNumber = currentNode.getMatchNumber() * 2;
             String keyPreviousFirstNode = generateKey(previousRound, previousFirstMatchNumber);
             String keyPreviousSecondNode = generateKey(previousRound, previousSecondMatchNumber);
-            BracketNode previousFirstNode = tournamentMap.get(keyPreviousFirstNode);
-            BracketNode previousSecondNode = tournamentMap.get(keyPreviousSecondNode);
+            BracketNode previousFirstNode = knockOut.get(keyPreviousFirstNode);
+            BracketNode previousSecondNode = knockOut.get(keyPreviousSecondNode);
             currentNode.setPreviousFirstBracketNode(previousFirstNode);
             currentNode.setPreviousSecondBracketNode(previousSecondNode);
             link(previousFirstNode);
@@ -112,7 +141,7 @@ public class Tournament {
         }
     }
 
-    private int calculateNumberOfRounds(int numberOfPlayers) {
+    private static int calculateNumberOfRounds(int numberOfPlayers) {
         int numberOfRounds = 1;
         int players = numberOfPlayers;
         while (players != 2) {

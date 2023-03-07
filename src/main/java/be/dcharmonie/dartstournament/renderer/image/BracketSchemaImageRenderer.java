@@ -1,23 +1,23 @@
-package be.dcharmonie.dartstournament.brackets.draw;
+package be.dcharmonie.dartstournament.renderer.image;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import be.dcharmonie.dartstournament.brackets.core.BracketNode;
-import be.dcharmonie.dartstournament.brackets.core.Round;
-import be.dcharmonie.dartstournament.brackets.core.Tournament;
-import be.dcharmonie.dartstournament.brackets.draw.layout.BracketSchemaPaperPrinter;
+import be.dcharmonie.dartstournament.core.BracketNode;
+import be.dcharmonie.dartstournament.core.Round;
+import be.dcharmonie.dartstournament.core.Tournament;
+import be.dcharmonie.dartstournament.renderer.image.layout.BracketSchemaPaperPrinter;
 
 /**
  *
  */
-public class BracketSchemaCreator {
+public class BracketSchemaImageRenderer {
 
     private final Tournament tournament;
 
     private BufferedImage image;
 
-    public BracketSchemaCreator(Tournament tournament) {
+    public BracketSchemaImageRenderer(Tournament tournament) {
         this.tournament = tournament;
     }
 

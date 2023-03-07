@@ -1,11 +1,11 @@
-package be.dcharmonie.dartstournament.brackets.draw;
+package be.dcharmonie.dartstournament.renderer.image;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import be.dcharmonie.dartstournament.brackets.draw.layout.BracketBoxShape;
-import be.dcharmonie.dartstournament.brackets.draw.layout.LineShape;
-import be.dcharmonie.dartstournament.brackets.draw.layout.Shape;
+import be.dcharmonie.dartstournament.renderer.image.layout.BracketBoxShape;
+import be.dcharmonie.dartstournament.renderer.image.layout.LineShape;
+import be.dcharmonie.dartstournament.renderer.image.layout.Shape;
 
 /**
  *
