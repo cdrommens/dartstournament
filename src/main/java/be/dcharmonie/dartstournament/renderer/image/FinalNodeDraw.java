@@ -11,7 +11,7 @@ import be.dcharmonie.dartstournament.renderer.image.layout.Shape;
  *
  */
 public class FinalNodeDraw implements Drawable {
-    private final List<Shape> SHAPES = new ArrayList<>();
+    private final List<Shape> shapes = new ArrayList<>();
     private int x;
     private int y;
 
@@ -19,9 +19,9 @@ public class FinalNodeDraw implements Drawable {
     public void assembleImage(int x, int y) {
         this.x = x;
         this.y = y;
-        SHAPES.add(new BracketBoxShape(this.x, this.y));
-        SHAPES.add(new LineShape(this.x - (Shape.WIDTH / 2), this.y, this.x - (Shape.WIDTH / 2) - Shape.WIDTH_LINE, this.y));
-        SHAPES.add(new LineShape(this.x + (Shape.WIDTH / 2), this.y, this.x + (Shape.WIDTH / 2) + Shape.WIDTH_LINE, this.y));
+        shapes.add(new BracketBoxShape(this.x, this.y));
+        shapes.add(new LineShape(this.x - (Shape.WIDTH / 2), this.y, this.x - (Shape.WIDTH / 2) - Shape.WIDTH_LINE, this.y));
+        shapes.add(new LineShape(this.x + (Shape.WIDTH / 2), this.y, this.x + (Shape.WIDTH / 2) + Shape.WIDTH_LINE, this.y));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class FinalNodeDraw implements Drawable {
 
     @Override
     public List<Shape> getShapes() {
-        return SHAPES;
+        return shapes;
     }
 
 }

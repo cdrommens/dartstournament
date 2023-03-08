@@ -12,7 +12,7 @@ import be.dcharmonie.dartstournament.renderer.image.layout.Shape;
  *
  */
 public class RoundNodeDraw implements Drawable {
-    private final List<Shape> SHAPES = new ArrayList<>();
+    private final List<Shape> shapes = new ArrayList<>();
     private final BracketNode parent;
     private int x;
     private int y;
@@ -36,9 +36,9 @@ public class RoundNodeDraw implements Drawable {
             calculateImageRight(previousFirstNode, previousSecondNode);
         }
         assembleConnectionLine(previousFirstNode, previousSecondNode);
-        SHAPES.add(new BracketBoxShape(this.x, this.y));
-        SHAPES.add(new LineShape(this.x - (Shape.WIDTH / 2), this.y, this.x - (Shape.WIDTH / 2) - Shape.WIDTH_LINE, this.y));
-        SHAPES.add(new LineShape(this.x + (Shape.WIDTH / 2), this.y, this.x + (Shape.WIDTH / 2) + Shape.WIDTH_LINE, this.y));
+        shapes.add(new BracketBoxShape(this.x, this.y));
+        shapes.add(new LineShape(this.x - (Shape.WIDTH / 2), this.y, this.x - (Shape.WIDTH / 2) - Shape.WIDTH_LINE, this.y));
+        shapes.add(new LineShape(this.x + (Shape.WIDTH / 2), this.y, this.x + (Shape.WIDTH / 2) + Shape.WIDTH_LINE, this.y));
 
     }
 
@@ -71,11 +71,11 @@ public class RoundNodeDraw implements Drawable {
 
     private void assembleConnectionLine(Drawable previousFirstNode, Drawable previousSecondNode) {
         if (previousSecondNode.isLeftBracket()) {
-            SHAPES.add(new LineShape(
+            shapes.add(new LineShape(
                     this.x - (Shape.WIDTH / 2) - Shape.WIDTH_LINE, previousFirstNode.getY(),
                     this.x - (Shape.WIDTH / 2) - Shape.WIDTH_LINE, previousSecondNode.getY()));
         } else {
-            SHAPES.add(new LineShape(
+            shapes.add(new LineShape(
                     this.x + (Shape.WIDTH / 2) + Shape.WIDTH_LINE, previousFirstNode.getY(),
                     this.x + (Shape.WIDTH / 2) + Shape.WIDTH_LINE, previousSecondNode.getY()));
         }
@@ -83,6 +83,6 @@ public class RoundNodeDraw implements Drawable {
 
     @Override
     public List<Shape> getShapes() {
-        return SHAPES;
+        return shapes;
     }
 }
