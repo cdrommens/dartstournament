@@ -1,4 +1,4 @@
-package be.dcharmonie.dartstournament.core;
+package be.dcharmonie.dartstournament;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 
 import org.thymeleaf.context.Context;
 
+import be.dcharmonie.dartstournament.core.Tournament;
 import be.dcharmonie.dartstournament.renderer.html.HtmlRenderer;
 import be.dcharmonie.dartstournament.renderer.image.BracketSchemaImageRenderer;
 import be.dcharmonie.dartstournament.renderer.image.layout.BracketSchemaPaperPrinter;

@@ -22,6 +22,7 @@ public class Tournament {
         this.totalNumberOfPlayers = totalNumberOfPlayers;
         this.numberOfPoules = numberOfPoules;
         this.numberOfPlayersKnockOutPhase = validateNumberOfPlayersKnockOutPhase(numberOfPlayersKnockOutPhase);
+        this.knockOut.clear();
         generate();
         link();
     }

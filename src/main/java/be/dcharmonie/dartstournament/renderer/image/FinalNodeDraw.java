@@ -11,7 +11,7 @@ import be.dcharmonie.dartstournament.renderer.image.layout.Shape;
  *
  */
 public class FinalNodeDraw implements Drawable {
-    private static final List<Shape> SHAPES = new ArrayList<>();
+    private final List<Shape> SHAPES = new ArrayList<>();
     private int x;
     private int y;
 
