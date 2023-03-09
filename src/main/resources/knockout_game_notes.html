@@ -70,8 +70,8 @@
                 </td>
             </tr>
         </table>
-        <hr th:if="${iter.count == 1 || (iter.count % 4 != 0 && iter.count != games.size())}"/>
-        <hr style="page-break-after: always" th:if="${(iter.count != 1 && iter.count % 4 == 0) || iter.count == games.size()}"/>
+        <hr th:if="${iter.count == 1 || (iter.count % 4 != 0 && iter.count != games.size)}"/>
+        <hr style="page-break-after: always" th:if="${(iter.count != 1 && iter.count % 4 == 0) || iter.count == games.size}"/>
     </div>
 </body>
 </html>

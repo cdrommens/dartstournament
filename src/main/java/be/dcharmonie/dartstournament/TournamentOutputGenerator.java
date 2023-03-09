@@ -14,9 +14,7 @@ import be.dcharmonie.dartstournament.renderer.image.BracketSchemaImageRenderer;
 import be.dcharmonie.dartstournament.renderer.image.layout.BracketSchemaPaperPrinter;
 import be.dcharmonie.dartstournament.writer.Writer;
 
-/**
- *
- */
+//TODO : alfabetiche aanwezigheidslijst genereren met vermelding in welke poule ze zitten
 public class TournamentOutputGenerator {
 
     private final Tournament tournament;
@@ -33,19 +31,19 @@ public class TournamentOutputGenerator {
         Context context = new Context();
         context.setVariable("alphabet", "ABCDEF");
         context.setVariable("poules", tournament.getPoules());
-        pdfWriter.write(htmlRenderer.render("poule", context), filename);
+        pdfWriter.write(htmlRenderer.render("poule_sheet", context), filename);
     }
 
     public void generatePouleGameNotes(String filename) {
         Context context = new Context();
         context.setVariable("poules", tournament.getPoules());
-        pdfWriter.write(htmlRenderer.render( "poule_briefjes", context), filename);
+        pdfWriter.write(htmlRenderer.render( "poule_game_notes", context), filename);
     }
 
     public void generateKnockOutGameNotes(String filename) {
         Context context = new Context();
         context.setVariable("games", tournament.getAllBracketNodes().sorted().toList());
-        pdfWriter.write(htmlRenderer.render( "knockout_briefjes", context), filename);
+        pdfWriter.write(htmlRenderer.render( "knockout_game_notes", context), filename);
     }
 
     public void generateKnockOutSchemaSheet(String filename) {
