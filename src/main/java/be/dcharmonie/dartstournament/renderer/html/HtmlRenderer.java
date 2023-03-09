@@ -10,7 +10,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
  */
 public class HtmlRenderer {
 
-    private final static ClassLoaderTemplateResolver TEMPLATE_RESOLVER = new ClassLoaderTemplateResolver();
+    private static final ClassLoaderTemplateResolver TEMPLATE_RESOLVER = new ClassLoaderTemplateResolver();
     private final TemplateEngine templateEngine;
 
     public HtmlRenderer() {

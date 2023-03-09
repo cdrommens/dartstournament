@@ -32,7 +32,7 @@
             <td class="dik">
                 <table style="width: 100%">
                     <tr style="width: 100%; padding: 10px;">
-                        <td style="width: 90%; text-align: center; font-weight: bold;" th:text="${poule.name()}"></td>
+                        <td style="width: 90%; text-align: center; font-weight: bold;" th:text="|Poule ${poule.getName()}|"></td>
                         <td style="width: 10%; text-align: right; font-weight: bold;" th:text="|Best of ${poule.getBestOf()}|"></td>
                     </tr>
                 </table>
@@ -45,8 +45,8 @@
                         <td class="binnen" style="width: 20%">#</td>
                         <td class="binnen" style="width: 80%">NAAM</td>
                     </tr>
-                    <tr class="binnen" th:each="player: ${poule.getPlayers()}">
-                        <td class="binnen" style="width: 20%">A</td>
+                    <tr class="binnen" th:each="player,iter: ${poule.getPlayers()}">
+                        <td class="binnen" style="width: 20%" th:text="${alphabet.charAt(iter.index)}"></td>
                         <td class="binnen" style="width: 80%" th:text="|${player.lastName()} ${player.firstName()}|"></td>
                     </tr>
                 </table>
@@ -66,9 +66,9 @@
                     </tr>
                     <tr th:each="game: ${poule.getGames()}">
                         <td class="binnen" style="width: 10%"></td>
-                        <td class="binnen kleiner" style="width: 50%" th:text="|${game.player1()} - ${game.player2()}|"></td>
+                        <td class="binnen kleiner" style="width: 50%" th:text="|${game.player1().getFullName()} - ${game.player2().getFullName()}|"></td>
                         <td class="binnen" style="width: 10%"> - </td>
-                        <td class="binnen kleiner" style="width: 30%" th:text="${game.writer()}"></td>
+                        <td class="binnen kleiner" style="width: 30%" th:text="${game.writer().getFullName()}"></td>
                     </tr>
                 </table>
             </td>

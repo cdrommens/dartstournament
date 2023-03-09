@@ -36,7 +36,7 @@ public class RoundNode implements BracketNode {
 
     @Override
     public String getDescription() {
-        return round.toString() + " - Game " + matchNumber;
+        return round.getDescription() + " - Game " + matchNumber;
     }
 
     @Override

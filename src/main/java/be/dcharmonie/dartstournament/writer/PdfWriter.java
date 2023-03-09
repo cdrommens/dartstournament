@@ -1,4 +1,4 @@
-package be.dcharmonie.dartstournament.renderer.pdf;
+package be.dcharmonie.dartstournament.writer;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,9 +11,10 @@ import com.lowagie.text.DocumentException;
 /**
  *
  */
-public class PdfRenderer {
+public class PdfWriter implements Writer<String> {
 
-    public void createPdf(String render, String filename) {
+    @Override
+    public void write(String render, String filename) {
         try {
             OutputStream outputStream = new FileOutputStream(filename);
 
@@ -24,7 +25,7 @@ public class PdfRenderer {
 
             outputStream.close();
         } catch (DocumentException | IOException e) {
-            throw new RuntimeException(e);
+            throw new IllegalStateException("Unable to save pdf to file " + filename, e);
         }
     }
 

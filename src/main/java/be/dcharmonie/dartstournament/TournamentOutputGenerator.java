@@ -12,7 +12,7 @@ import be.dcharmonie.dartstournament.core.Tournament;
 import be.dcharmonie.dartstournament.renderer.html.HtmlRenderer;
 import be.dcharmonie.dartstournament.renderer.image.BracketSchemaImageRenderer;
 import be.dcharmonie.dartstournament.renderer.image.layout.BracketSchemaPaperPrinter;
-import be.dcharmonie.dartstournament.renderer.pdf.PdfRenderer;
+import be.dcharmonie.dartstournament.writer.Writer;
 
 /**
  *
@@ -20,10 +20,10 @@ import be.dcharmonie.dartstournament.renderer.pdf.PdfRenderer;
 public class TournamentOutputGenerator {
 
     private final Tournament tournament;
-    private final PdfRenderer pdfWriter;
+    private final Writer<String> pdfWriter;
     private final HtmlRenderer htmlRenderer;
 
-    public TournamentOutputGenerator(Tournament tournament, PdfRenderer pdfWriter) {
+    public TournamentOutputGenerator(Tournament tournament, Writer<String> pdfWriter) {
         this.tournament = tournament;
         this.pdfWriter = pdfWriter;
         this.htmlRenderer = new HtmlRenderer();
@@ -31,20 +31,21 @@ public class TournamentOutputGenerator {
 
     public void generatePouleSheets(String filename) {
         Context context = new Context();
+        context.setVariable("alphabet", "ABCDEF");
         context.setVariable("poules", tournament.getPoules());
-        pdfWriter.createPdf(htmlRenderer.render("poule", context), filename);
+        pdfWriter.write(htmlRenderer.render("poule", context), filename);
     }
 
     public void generatePouleGameNotes(String filename) {
         Context context = new Context();
         context.setVariable("poules", tournament.getPoules());
-        pdfWriter.createPdf(htmlRenderer.render( "poule_briefjes", context), filename);
+        pdfWriter.write(htmlRenderer.render( "poule_briefjes", context), filename);
     }
 
     public void generateKnockOutGameNotes(String filename) {
-        //TODO: to implement
         Context context = new Context();
-        pdfWriter.createPdf(htmlRenderer.render( "knockout_briefjes", context), filename);
+        context.setVariable("games", tournament.getAllBracketNodes().sorted().toList());
+        pdfWriter.write(htmlRenderer.render( "knockout_briefjes", context), filename);
     }
 
     public void generateKnockOutSchemaSheet(String filename) {
@@ -64,9 +65,9 @@ public class TournamentOutputGenerator {
             context.setVariable("image", image);
             context.setVariable("width", printer.getImage().getWidth());
             context.setVariable("height", printer.getImage().getHeight());
-            pdfWriter.createPdf(htmlRenderer.render( "knockout_schema", context), filename);
+            pdfWriter.write(htmlRenderer.render( "knockout_schema", context), filename);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IllegalStateException("Failed to save bytearray", e);
         }
     }
 }

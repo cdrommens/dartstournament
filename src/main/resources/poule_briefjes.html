@@ -32,9 +32,9 @@
                         <tr style="width: 100%">
                             <td class="dik" style="width: 30%; text-align: left; font-weight: bold; padding: 8px">BORD</td>
                             <td style="width: 5%"></td>
-                            <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="${poule.name()}"></td>
+                            <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="|Poule ${poule.getName()}|"></td>
                             <td style="width: 5%"></td>
-                            <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:each="|BEST OF ${poule.getBestOf()}|"></td>
+                            <td class="dik" style="width: 30%; text-align: center; font-weight: bold; padding: 8px" th:text="|BEST OF ${poule.getBestOf()}|"></td>
                         </tr>
                     </table>
                 </td>
@@ -49,13 +49,13 @@
                         </tr>
                         <tr class="binnen">
                             <td class="binnen" style="width: 20%">1</td>
-                            <td class="binnen" style="width: 60%" th:text="${game.player1()}"></td>
-                            <td class="binnen" style="width: 20%"> - </td>
+                            <td class="binnen" style="width: 60%" th:text="${game.player1().getFullName()}"></td>
+                            <td class="binnen" style="width: 20%"></td>
                         </tr>
                         <tr class="binnen">
                             <td class="binnen" style="width: 20%">2</td>
-                            <td class="binnen" style="width: 60%" th:text="${game.player2()}"></td>
-                            <td class="binnen" style="width: 20%"> - </td>
+                            <td class="binnen" style="width: 60%" th:text="${game.player2().getFullName()}"></td>
+                            <td class="binnen" style="width: 20%"></td>
                         </tr>
                     </table>
                 </td>
@@ -65,14 +65,14 @@
                     <table class="binnen">
                         <tr>
                             <td style="width: 20%; text-align: center; font-weight: bold; padding: 8px">SCHRIJVER</td>
-                            <td style="width: 80%; text-align: left; padding: 8px" th:text="${game.writer()}"></td>
+                            <td style="width: 80%; text-align: left; padding: 8px" th:text="${game.writer().getFullName()}"></td>
                         </tr>
                     </table>
                 </td>
             </tr>
         </table>
-        <hr th:if="${iter.index % 3 != 0}"/>
-        <hr style="page-break-after: always" th:if="${iter.index % 3 == 0}"/>
+        <hr th:if="${iter.count == 1 || (iter.count % 4 != 0 && iter.count != poule.getGames().size())}"/>
+        <hr style="page-break-after: always" th:if="${(iter.count != 1 && iter.count % 4 == 0) || iter.count == poule.getGames().size()}"/>
     </div>
 </div>
 </body>

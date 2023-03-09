@@ -18,6 +18,7 @@ public class Tournament {
     private final List<Poule> poules = new ArrayList<>(numberOfPoules);
     private final Map<String, BracketNode> knockOut = new HashMap<>();
 
+    //TODO : best of per knockout round configuration
     public Tournament(int totalNumberOfPlayers, int numberOfPoules, int numberOfPlayersKnockOutPhase) {
         this.totalNumberOfPlayers = totalNumberOfPlayers;
         this.numberOfPoules = numberOfPoules;

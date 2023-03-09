@@ -8,7 +8,7 @@ public class Poule {
     private final String name;
     private final int bestOf;
     private final List<Player> players = new ArrayList<>();
-    private List<PouleGame> games = new ArrayList<>();
+    private final List<PouleGame> games = new ArrayList<>();
 
     private static final int MAX_NUMBER_OF_PLAYERS = 6;
     private static final Map<Integer, List<GameRule>> RULES = Map.of(

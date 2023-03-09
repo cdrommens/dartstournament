@@ -28,7 +28,7 @@ public class FinalNode implements BracketNode {
 
     @Override
     public String getDescription() {
-        return "This is the final!";
+        return ROUND.getDescription();
     }
 
     @Override
