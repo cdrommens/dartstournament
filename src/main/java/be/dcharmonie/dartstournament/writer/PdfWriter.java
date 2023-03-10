@@ -45,7 +45,7 @@ public class PdfWriter implements Writer<String> {
             document.add(schema);
             document.close();
         } catch (DocumentException | IOException e) {
-            throw new RuntimeException(e);
+            throw new IllegalStateException("Unable to save pdf to file " + filename, e);
         }
     }
 }
