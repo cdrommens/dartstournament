@@ -3,6 +3,8 @@ package be.dcharmonie.dartstournament.core;
 import java.util.Objects;
 import java.util.Optional;
 
+import be.dcharmonie.dartstournament.renderer.image.Drawable;
+
 /**
  *
  */
@@ -11,6 +13,8 @@ public interface BracketNode extends Comparable<BracketNode> {
     Round getRound();
     int getMatchNumber();
     String getDescription();
+
+    Drawable getDrawable();
 
     void setPreviousFirstBracketNode(BracketNode previousFirstBracketNode);
 

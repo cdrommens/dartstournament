@@ -1,12 +1,15 @@
 package be.dcharmonie.dartstournament.core;
 
-import java.awt.Graphics2D;
+import java.util.Objects;
 import java.util.Optional;
+
+import be.dcharmonie.dartstournament.renderer.image.Drawable;
+import be.dcharmonie.dartstournament.renderer.image.RoundNodeDraw;
 
 /**
  *
  */
-public class RoundNode implements BracketNode, Drawable {
+public class RoundNode implements BracketNode {
 
     private final Round round;
     private final int matchNumber;
@@ -14,9 +17,7 @@ public class RoundNode implements BracketNode, Drawable {
     private BracketNode previousFirstBracketNode;
     private BracketNode previousSecondBracketNode;
 
-    private int x;
-    private int y;
-    private boolean isLeft;
+    private final Drawable drawable = new RoundNodeDraw(this);
 
     public RoundNode(Round round, int matchNumber) {
         this.round = round;
@@ -35,7 +36,7 @@ public class RoundNode implements BracketNode, Drawable {
 
     @Override
     public String getDescription() {
-        return round.toString() + " - Game " + matchNumber;
+        return round.getDescription() + " - Game " + matchNumber;
     }
 
     @Override
@@ -68,60 +69,23 @@ public class RoundNode implements BracketNode, Drawable {
         return Optional.ofNullable(previousSecondBracketNode);
     }
 
+    public Drawable getDrawable() {
+        return drawable;
+    }
+
     @Override
-    public void drawImage(Graphics2D graphics, int x, int y) {
-        if (getPreviousFirstBracketNode().isEmpty() || getPreviousSecondBracketNode().isEmpty()) {
-            throw new IllegalStateException("Trying to draw an incomplete node.");
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
-        Drawable previousFirstNode = (Drawable) getPreviousFirstBracketNode().get();
-        Drawable previousSecondNode = (Drawable) getPreviousSecondBracketNode().get();
-        if (previousFirstNode.isLeftBracket()) {
-            calculateImageLeft(previousFirstNode, previousSecondNode);
-        } else {
-            calculateImageRight(previousFirstNode, previousSecondNode);
+        if (!(o instanceof RoundNode roundNode)) {
+            return false;
         }
-        graphics.drawLine(this.x - (WIDTH / 2), this.y, this.x - (WIDTH / 2) - WIDTH_LINE, this.y);
-        graphics.drawLine(this.x + (WIDTH / 2), this.y, this.x + (WIDTH / 2) + WIDTH_LINE, this.y);
-        drawConnectionLine(graphics, previousFirstNode, previousSecondNode);
-        drawBox(graphics, this.x, this.y);
+        return getMatchNumber() == roundNode.getMatchNumber() && getRound() == roundNode.getRound();
     }
 
     @Override
-    public boolean isLeftBracket() {
-        return this.isLeft;
-    }
-
-    @Override
-    public int getX() {
-        return this.x;
-    }
-
-    @Override
-    public int getY() {
-        return this.y;
-    }
-
-    private void calculateImageLeft(Drawable previousFirstNode, Drawable previousSecondNode) {
-        this.x = previousFirstNode.getX() + getWidth();
-        this.y = ((previousSecondNode.getY() - previousFirstNode.getY()) / 2) + previousFirstNode.getY();
-        this.isLeft = true;
-    }
-
-    private void calculateImageRight(Drawable previousFirstNode, Drawable previousSecondNode) {
-        this.x = previousFirstNode.getX() - getWidth();
-        this.y = ((previousSecondNode.getY() - previousFirstNode.getY()) / 2) + previousFirstNode.getY();
-        this.isLeft = false;
-    }
-
-    private void drawConnectionLine(Graphics2D graphics, Drawable previousFirstNode, Drawable previousSecondNode) {
-        if (previousSecondNode.isLeftBracket()) {
-            graphics.drawLine(
-                    this.x - (WIDTH / 2) - WIDTH_LINE, previousFirstNode.getY(),
-                    this.x - (WIDTH / 2) - WIDTH_LINE, previousSecondNode.getY());
-        } else {
-            graphics.drawLine(
-                    this.x + (WIDTH / 2) + WIDTH_LINE, previousFirstNode.getY(),
-                    this.x + (WIDTH / 2) + WIDTH_LINE, previousSecondNode.getY());
-        }
+    public int hashCode() {
+        return Objects.hash(getRound(), getMatchNumber());
     }
 }

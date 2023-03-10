@@ -1,20 +1,21 @@
 package be.dcharmonie.dartstournament.core;
 
-import java.awt.Graphics2D;
+import java.util.Objects;
 import java.util.Optional;
+
+import be.dcharmonie.dartstournament.renderer.image.Drawable;
+import be.dcharmonie.dartstournament.renderer.image.FirstRoundNodeDraw;
 
 /**
  *
  */
-public class FirstRoundNode implements BracketNode, Drawable {
+public class FirstRoundNode implements BracketNode {
 
     private final Round round;
     private final int matchNumber;
     private BracketNode nextBracketNode;
 
-    private int x;
-    private int y;
-    private boolean isLeft;
+    private final Drawable drawable = new FirstRoundNodeDraw(this);
 
     public FirstRoundNode(Round round, int matchNumber) {
         this.round = round;
@@ -33,7 +34,7 @@ public class FirstRoundNode implements BracketNode, Drawable {
 
     @Override
     public String getDescription() {
-        return round.toString() + " - Game " + matchNumber;
+        return round.getDescription() + " - Game " + matchNumber;
     }
 
     @Override
@@ -66,56 +67,23 @@ public class FirstRoundNode implements BracketNode, Drawable {
         return Optional.empty();
     }
 
-    @Override
-    public void drawImage(Graphics2D graphics, int x, int y) {
-        int numberOfPlayersInRound = (int)Math.pow(2,getRound().getRoundNumber());
-        int numberOfMatchesInRound = numberOfPlayersInRound/2;
-        int numberOfMatchesInHalfRound = numberOfMatchesInRound/2;
-        int numberOfMatchesInQuarterRound = numberOfMatchesInHalfRound/2;
+    public Drawable getDrawable() {
+        return drawable;
+    }
 
-        if (getMatchNumber() <= numberOfMatchesInHalfRound) {
-            drawImageLeft(graphics, numberOfMatchesInQuarterRound, x, y);
-        } else {
-            drawImageRight(graphics, numberOfMatchesInHalfRound + numberOfMatchesInQuarterRound, x, y);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
-    }
-
-    @Override
-    public boolean isLeftBracket() {
-        return this.isLeft;
-    }
-
-    private void drawImageLeft(Graphics2D graphics, int medio, int x, int y) {
-        this.x = x - getWidth() - ((getRound().getRoundNumber() - 2) * getWidth());
-        if (getMatchNumber() <= medio) {
-            this.y = y - (getHeight() / 2) - ((medio - getMatchNumber()) * getHeight());
-        } else {
-            this.y = y + (getHeight() / 2) + ((getMatchNumber() - medio - 1) * getHeight());
+        if (!(o instanceof FirstRoundNode that)) {
+            return false;
         }
-        this.isLeft = true;
-        graphics.drawLine(this.x + (WIDTH / 2), this.y, this.x + (WIDTH / 2) + WIDTH_LINE, this.y);
-        drawBox(graphics, this.x, this.y);
-    }
-
-    private void drawImageRight(Graphics2D graphics, int medio, int x, int y) {
-        this.x = x + getWidth() + ((getRound().getRoundNumber() - 2) * getWidth());
-        if (getMatchNumber() <= medio) {
-            this.y = y - (getHeight() / 2) - ((medio - getMatchNumber()) * getHeight());
-        } else {
-            this.y = y + (getHeight() / 2) + ((getMatchNumber() - medio - 1) * getHeight());
-        }
-        this.isLeft = false;
-        graphics.drawLine(this.x - (WIDTH / 2), this.y, this.x - (WIDTH / 2) - WIDTH_LINE, this.y);
-        drawBox(graphics, this.x, this.y);
+        return getMatchNumber() == that.getMatchNumber() && getRound() == that.getRound();
     }
 
     @Override
-    public int getX() {
-        return this.x;
-    }
-
-    @Override
-    public int getY() {
-        return this.y;
+    public int hashCode() {
+        return Objects.hash(getRound(), getMatchNumber());
     }
 }
