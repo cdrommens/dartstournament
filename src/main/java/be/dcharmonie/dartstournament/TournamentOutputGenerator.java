@@ -2,7 +2,6 @@ package be.dcharmonie.dartstournament;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Base64;
 
 import javax.imageio.ImageIO;
 
@@ -12,6 +11,7 @@ import be.dcharmonie.dartstournament.core.Tournament;
 import be.dcharmonie.dartstournament.renderer.html.HtmlRenderer;
 import be.dcharmonie.dartstournament.renderer.image.BracketSchemaImageRenderer;
 import be.dcharmonie.dartstournament.renderer.image.layout.BracketSchemaPaperPrinter;
+import be.dcharmonie.dartstournament.writer.PdfWriter;
 import be.dcharmonie.dartstournament.writer.Writer;
 
 //TODO : alfabetiche aanwezigheidslijst genereren met vermelding in welke poule ze zitten
@@ -48,7 +48,6 @@ public class TournamentOutputGenerator {
 
     public void generateKnockOutSchemaSheet(String filename) {
         try {
-            //TODO : is paper size ok? Need to scale?
             BracketSchemaPaperPrinter printer = new BracketSchemaPaperPrinter(tournament.getNumberOfPlayersKnockOutPhase(),
                     tournament.getFirstRoundType().getRoundNumber());
             BracketSchemaImageRenderer drawer = new BracketSchemaImageRenderer(tournament);
@@ -56,14 +55,7 @@ public class TournamentOutputGenerator {
 
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ImageIO.write(printer.getImage(), "png", byteArrayOutputStream);
-            String base64Image = Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray());
-
-            Context context = new Context();
-            String image = "data:image/png;base64, " + base64Image;
-            context.setVariable("image", image);
-            context.setVariable("width", printer.getImage().getWidth());
-            context.setVariable("height", printer.getImage().getHeight());
-            pdfWriter.write(htmlRenderer.render( "knockout_schema", context), filename);
+            ((PdfWriter)pdfWriter).write(byteArrayOutputStream, printer.getPaperFormat(), filename);
         } catch (IOException e) {
             throw new IllegalStateException("Failed to save bytearray", e);
         }

@@ -130,7 +130,16 @@ class TournamentOutputGeneratorTest {
         assertThat(resourceKnockOutGameNotesPdfDirectory.toFile()).exists();
     }
 
-
+    @Disabled("Method used for generating new knockout schema")
+    @ParameterizedTest
+    @ValueSource(ints = {8, 16, 32, 64})
+    void testKnockOutSchema(int numberOfPlayersKnockOutPhase) {
+        Tournament tournament = new Tournament(4, 2, numberOfPlayersKnockOutPhase);
+        Path resourceKnockOutSchemaSheet = Paths.get("src","test","resources", String.format("knockOutSchema%s.pdf", numberOfPlayersKnockOutPhase));
+        TournamentOutputGenerator generator = new TournamentOutputGenerator(tournament, new PdfWriter());
+        generator.generateKnockOutSchemaSheet(resourceKnockOutSchemaSheet.toFile().getPath());
+        assertThat(resourceKnockOutSchemaSheet.toFile()).exists();
+    }
 
     private static class StringWriter implements Writer<String> {
 
