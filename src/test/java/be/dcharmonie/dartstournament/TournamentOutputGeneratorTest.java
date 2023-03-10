@@ -17,6 +17,8 @@ import be.dcharmonie.dartstournament.core.Poule;
 import be.dcharmonie.dartstournament.core.Tournament;
 import be.dcharmonie.dartstournament.writer.PdfWriter;
 import be.dcharmonie.dartstournament.writer.Writer;
+import de.redsix.pdfcompare.CompareResult;
+import de.redsix.pdfcompare.PdfComparator;
 
 class TournamentOutputGeneratorTest {
 
@@ -36,7 +38,6 @@ class TournamentOutputGeneratorTest {
         assertThat(actualContent).isEqualTo(expectedContent);
     }
 
-    @Disabled("To fix : https://github.com/red6/pdfcompare")
     @ParameterizedTest
     @ValueSource(ints = {8, 10, 12})
     void testPouleSheetsPdf(int numberOfPlayers, @TempDir Path tempDir) throws IOException {
@@ -47,10 +48,9 @@ class TournamentOutputGeneratorTest {
         generator.generatePouleSheets(actual.toFile().getPath());
 
         Path resourceDirectory = Paths.get("src","test","resources", String.format("pouleSheet%s.pdf", numberOfPlayers/2));
-        byte[] expectedContent = Files.readAllBytes(resourceDirectory);
-        byte[] actualContent = Files.readAllBytes(actual);
 
-        assertThat(actualContent).isEqualTo(expectedContent);
+        final CompareResult result = new PdfComparator(resourceDirectory, actual).compare();
+        assertThat(result.isEqual()).isTrue();
     }
 
     @ParameterizedTest
@@ -70,6 +70,21 @@ class TournamentOutputGeneratorTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {8, 10, 12})
+    void testPouleGameNotesPdf(int numberOfPlayers, @TempDir Path tempDir) throws IOException {
+        Tournament tournament = new Tournament(numberOfPlayers, 2, 4);
+        generatePoules(tournament, numberOfPlayers);
+        Path actual = tempDir.resolve(String.format("pouleGameNotes%s.pdf", numberOfPlayers/2));
+        TournamentOutputGenerator generator = new TournamentOutputGenerator(tournament, new PdfWriter());
+        generator.generatePouleGameNotes(actual.toFile().getPath());
+
+        Path resourceDirectory = Paths.get("src","test","resources", String.format("pouleGameNotes%s.pdf", numberOfPlayers/2));
+
+        final CompareResult result = new PdfComparator(resourceDirectory, actual).compare();
+        assertThat(result.isEqual()).isTrue();
+    }
+
+    @ParameterizedTest
     @ValueSource(ints = {8, 16, 32, 64})
     void testKnockOutGameNotes(int numberOfPlayersKnockOutPhase, @TempDir Path tempDir) throws IOException {
         Tournament tournament = new Tournament(4, 2, numberOfPlayersKnockOutPhase);
@@ -82,6 +97,34 @@ class TournamentOutputGeneratorTest {
         String actualContent = Files.readString(actual);
 
         assertThat(actualContent).isEqualTo(expectedContent);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {8, 16, 32, 64})
+    void testKnockOutGameNotesPdf(int numberOfPlayersKnockOutPhase, @TempDir Path tempDir) throws IOException {
+        Tournament tournament = new Tournament(4, 2, numberOfPlayersKnockOutPhase);
+        Path actual = tempDir.resolve(String.format("knockOutGameNotes%s.pdf", numberOfPlayersKnockOutPhase));
+        TournamentOutputGenerator generator = new TournamentOutputGenerator(tournament, new PdfWriter());
+        generator.generateKnockOutGameNotes(actual.toFile().getPath());
+
+        Path resourceDirectory = Paths.get("src","test","resources", String.format("knockOutGameNotes%s.pdf", numberOfPlayersKnockOutPhase));
+
+        final CompareResult result = new PdfComparator(resourceDirectory, actual).compare();
+        assertThat(result.isEqual()).isTrue();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {8, 16, 32, 64})
+    void testKnockOutSchemaPdf(int numberOfPlayersKnockOutPhase, @TempDir Path tempDir) throws IOException {
+        Tournament tournament = new Tournament(4, 2, numberOfPlayersKnockOutPhase);
+        Path actual = tempDir.resolve(String.format("knockOutSchema%s.pdf", numberOfPlayersKnockOutPhase));
+        TournamentOutputGenerator generator = new TournamentOutputGenerator(tournament, new PdfWriter());
+        generator.generateKnockOutSchemaSheet(actual.toFile().getPath());
+
+        Path resourceDirectory = Paths.get("src","test","resources", String.format("knockOutSchema%s.pdf", numberOfPlayersKnockOutPhase));
+
+        final CompareResult result = new PdfComparator(resourceDirectory, actual).compare();
+        assertThat(result.isEqual()).isTrue();
     }
 
     private static void generatePoules(Tournament tournament, int numberOfPlayers) {
