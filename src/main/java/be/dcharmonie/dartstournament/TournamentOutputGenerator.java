@@ -2,11 +2,16 @@ package be.dcharmonie.dartstournament;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 import org.thymeleaf.context.Context;
 
+import be.dcharmonie.dartstournament.core.Pair;
+import be.dcharmonie.dartstournament.core.Poule;
 import be.dcharmonie.dartstournament.core.Tournament;
 import be.dcharmonie.dartstournament.renderer.html.HtmlRenderer;
 import be.dcharmonie.dartstournament.renderer.image.BracketSchemaImageRenderer;
@@ -38,6 +43,19 @@ public class TournamentOutputGenerator {
         Context context = new Context();
         context.setVariable("poules", tournament.getPoules());
         pdfWriter.write(htmlRenderer.render( "poule_game_notes", context), filename);
+    }
+
+    public void generateAttendanceList(String filename) {
+        Context context = new Context();
+        List<Pair<String>> result = new ArrayList<>();
+        for (Poule poule : tournament.getPoules()) {
+            poule.getPlayers().stream()
+                    .map(player -> new Pair<>(player.getFullName(), poule.getName()))
+                    .forEach(result::add);
+        }
+        result.sort(Comparator.comparing(Pair::left));
+        context.setVariable("attendance", result);
+        pdfWriter.write(htmlRenderer.render("attendance_list", context), filename);
     }
 
     public void generateKnockOutGameNotes(String filename) {
