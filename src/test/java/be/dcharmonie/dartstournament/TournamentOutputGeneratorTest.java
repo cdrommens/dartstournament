@@ -7,17 +7,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import be.dcharmonie.dartstournament.library.TournamentOutputGenerator;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import be.dcharmonie.dartstournament.core.Player;
-import be.dcharmonie.dartstournament.core.Poule;
-import be.dcharmonie.dartstournament.core.Tournament;
-import be.dcharmonie.dartstournament.writer.PdfWriter;
-import be.dcharmonie.dartstournament.writer.Writer;
+import be.dcharmonie.dartstournament.library.core.Player;
+import be.dcharmonie.dartstournament.library.core.Poule;
+import be.dcharmonie.dartstournament.library.core.Tournament;
+import be.dcharmonie.dartstournament.library.writer.PdfWriter;
+import be.dcharmonie.dartstournament.library.writer.Writer;
 import de.redsix.pdfcompare.CompareResult;
 import de.redsix.pdfcompare.PdfComparator;
 
